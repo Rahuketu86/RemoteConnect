@@ -2,30 +2,28 @@
 > Launch Code , Jupyter or other apps from colab and OEC
 
 
-This file will become your README and also the index of your documentation.
-
 ## Install
 
-`pip install -e .`
+- For development (editable version)
+  
+  ```pip install -e .```
+  
+- For latest version 
+
+   ```!pip install -U git+https://github.com/Rahuketu86/RemoteConnect.git```
 
 ## How to use
 
-Fill me in please! Don't forget code examples:
+- Open a colab notebook
+- Install the RemoteConnect package if on colab
 
-```python
-1+1+2
-```
+  ```!pip install -U git+https://github.com/Rahuketu86/RemoteConnect.git```
+  
+- For running VSCode on Remote Machine ( Server or Colab)
 
+  ```!start_code --port=<port> --password=<password>```
 
+- For running Jupyter on Remote Machine ( Server or Colab)
 
-
-    4
-
-
-
-```python
-say_hello("S33")
-```
-
-    Say hello to S33
-
+  ```!start_jupyter --port=<port>```
+  
