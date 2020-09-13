@@ -100,6 +100,7 @@ class RemoteJupyter:
 
     def _run_jupyter(self):
         os.system(f"fuser -n tcp -k {self.port}")
+        print(self.url)
         if IN_COLAB:
             drive.mount("/content/drive")
         jupyter_cmd = f"jupyter notebook --NotebookApp.allow_remote_access=True --ip=0.0.0.0 --port={self.port}"
