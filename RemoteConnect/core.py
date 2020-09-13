@@ -33,7 +33,7 @@ def connect_to_ngrok(port):
         print(f"Disconnecting {public_url}")
         ngrok.disconnect(public_url)
     url = ngrok.connect(port=port, options={"bind_tls":True})
-    print(f"Code server can be assesed on : {url}")
+    print(f"Remote server can be assesed on : {url}")
     return url
 
 # Cell
@@ -87,7 +87,7 @@ class RemoteCode:
 
 # Cell
 class RemoteJupyter:
-    """ Install and launch an instance of Remote Code"""
+    """ Install and launch an instance of Remote Jupyter"""
     def __init__(self, port=9000):
         self.port = port
         self._mount = IN_COLAB
