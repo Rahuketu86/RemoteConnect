@@ -87,7 +87,7 @@ class RemoteCode:
 
 
 # Cell
-NOTEBOOK_EXTENSIONS = ["codefolding", "collapsible_headings", "execute_time", "toc2"]
+NOTEBOOK_EXTENSIONS = ["collapsible_headings", "execute_time", "toc2"]
 
 # Cell
 class RemoteJupyter:
