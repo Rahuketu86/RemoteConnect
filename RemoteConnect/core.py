@@ -87,7 +87,7 @@ class RemoteCode:
 
 
 # Cell
-NOTEBOOK_EXTENSIONS = ["collapsible_headings", "execute_time", "toc2"]
+NOTEBOOK_EXTENSIONS = ["toc2", "collapsible_headings"]
 
 # Cell
 class RemoteJupyter:
@@ -103,9 +103,11 @@ class RemoteJupyter:
 
 
     def _install_extensions(self):
-        subprocess.run(["jupyter", "contrib", "nbextension","install",  "--user"], stdout=subprocess.PIPE)
-#         for ext in NOTEBOOK_EXTENSIONS:
-#             subprocess.run([f"jupyter nbextension enable {ext}/main"], stdout=subprocess.PIPE)
+        subprocess.run(["jupyter", "contrib", "nbextension","install",  "--system"], stdout=subprocess.PIPE)
+        #nbextensions_configurator enable --user
+        subprocess.run(["jupyter", "nbextensions_configurator","enable",  "--system"], stdout=subprocess.PIPE)
+        for ext in NOTEBOOK_EXTENSIONS:
+            subprocess.run([f"jupyter nbextension enable {ext}/main"], stdout=subprocess.PIPE)
 
     def _start_server(self):
         self.url = connect_to_ngrok(self.port)
