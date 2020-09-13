@@ -107,7 +107,7 @@ class RemoteJupyter:
         #nbextensions_configurator enable --user
         subprocess.run(["jupyter", "nbextensions_configurator","enable",  "--system"], stdout=subprocess.PIPE)
         for ext in NOTEBOOK_EXTENSIONS:
-            subprocess.run([f"jupyter nbextension enable {ext}/main"], stdout=subprocess.PIPE)
+            subprocess.run([f"jupyter nbextension enable {ext}/main --system"], stdout=subprocess.PIPE)
 
     def _start_server(self):
         self.url = connect_to_ngrok(self.port)
