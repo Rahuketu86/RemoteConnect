@@ -1,5 +1,5 @@
 # Remote Connect
-> Launch Code , Jupyter or other apps from colab
+> Launch Code , Jupyter or other apps from colab and OEC
 
 
 This file will become your README and also the index of your documentation.
@@ -13,19 +13,19 @@ This file will become your README and also the index of your documentation.
 Fill me in please! Don't forget code examples:
 
 ```python
-1+1
+1+1+2
 ```
 
 
 
 
-    2
+    4
 
 
 
 ```python
-say_hello("S4")
+say_hello("S5")
 ```
 
-    Say hello to S4
+    Say hello to S5
 

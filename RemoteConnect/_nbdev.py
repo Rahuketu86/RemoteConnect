@@ -6,7 +6,7 @@ index = {"say_hello": "00_core.ipynb"}
 
 modules = ["core.py"]
 
-doc_url = "https://rahuketu86.github.io/RemoteConnect/"
+doc_url = "https://remoteconnect.netlify.app"
 
 git_url = "https://github.com/rahuketu86/RemoteConnect/tree/master/"
 
