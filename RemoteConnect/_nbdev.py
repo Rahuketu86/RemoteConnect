@@ -2,7 +2,11 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"say_hello": "00_core.ipynb",
+index = {"IN_COLAB": "00_core.ipynb",
+         "EXTENSIONS": "00_core.ipynb",
+         "say_hello": "00_core.ipynb",
+         "connect_to_ngrok": "00_core.ipynb",
+         "RemoteCode": "00_core.ipynb",
          "start_code": "01_cli.ipynb"}
 
 modules = ["core.py",

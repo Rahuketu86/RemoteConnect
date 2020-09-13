@@ -22,10 +22,3 @@ Fill me in please! Don't forget code examples:
     4
 
 
-
-```python
-say_hello("S5")
-```
-
-    Say hello to S5
-
