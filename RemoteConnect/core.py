@@ -97,7 +97,7 @@ class RemoteJupyter:
         self._mount = IN_COLAB
         self.url = None
         if IN_COLAB:
-            _install_extensions()
+            self._install_extensions()
         self._start_server()
         self._run_jupyter()
 
