@@ -3,9 +3,17 @@
 __all__ = ['IN_COLAB', 'EXTENSIONS', 'say_hello', 'connect_to_ngrok', 'RemoteCode']
 
 # Cell
-IN_COLAB = 'google.colab' in str(get_ipython())
-if IN_COLAB:
+# IN_COLAB = 'google.colab' in str(get_ipython())
+# if IN_COLAB:
+#     from google.colab import drive
+
+IN_COLAB = False
+try:
     from google.colab import drive
+
+    IN_COLAB = True
+except ImportError:
+    IN_COLAB = False
 import os
 import subprocess
 from pyngrok import ngrok
