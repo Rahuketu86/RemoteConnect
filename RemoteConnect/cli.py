@@ -3,7 +3,6 @@
 __all__ = ['start_code', 'start_jupyter']
 
 # Cell
-from nbdev.showdoc import *
 from fastscript import call_parse, Param, bool_arg
 from .core import RemoteCode, RemoteJupyter
 
