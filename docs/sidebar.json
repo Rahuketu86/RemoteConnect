@@ -1,6 +1,7 @@
 {
   "RemoteConnect": {
     "Overview": "/",
-    "core": "core.html"
+    "core": "core.html",
+    "cli": "cli.html"
   }
 }

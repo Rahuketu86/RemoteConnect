@@ -2,9 +2,11 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"say_hello": "00_core.ipynb"}
+index = {"say_hello": "00_core.ipynb",
+         "start_code": "01_cli.ipynb"}
 
-modules = ["core.py"]
+modules = ["core.py",
+           "cli.py"]
 
 doc_url = "https://remoteconnect.netlify.app"
 
