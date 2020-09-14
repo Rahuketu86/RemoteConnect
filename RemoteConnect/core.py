@@ -76,7 +76,6 @@ class RemoteCode:
     def _start_server(self):
         self.url = connect_to_ngrok(self.port)
 
-
     def _run_code(self):
         os.system(f"fuser -n tcp -k {self.port}")
         if IN_COLAB:
@@ -105,7 +104,6 @@ class RemoteJupyter:
             self._install_extensions()
         self._start_server()
         self._run_jupyter()
-
 
     def _install_extensions(self):
         subprocess.run(["jupyter", "contrib", "nbextension","install",  "--system"], stdout=subprocess.PIPE)
