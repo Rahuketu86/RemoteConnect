@@ -120,7 +120,7 @@ class RemoteJupyter:
         print(self.url)
         if IN_COLAB:
             drive.mount("/content/drive")
-        jupyter_cmd = f"jupyter notebook --NotebookApp.allow_remote_access=True --ip=0.0.0.0 --port={self.port}"
+        jupyter_cmd = f"jupyter notebook --NotebookApp.allow_remote_access=True  --NotebookApp.disable_check_xsrf=True --ip=0.0.0.0 --port={self.port}"
         execute_cmd(jupyter_cmd)
 
     def __str__(self):
