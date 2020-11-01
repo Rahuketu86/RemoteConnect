@@ -15,15 +15,18 @@
 ## How to use
 
 - Open a colab notebook
-- Install the RemoteConnect package if on colab
+    - Install the RemoteConnect package if on colab
 
-  ```!pip install -U git+https://github.com/Rahuketu86/RemoteConnect.git```
+      ```!pip install -U git+https://github.com/Rahuketu86/RemoteConnect.git```
+
+    - For running VSCode on Remote Machine ( Server or Colab)
+
+      ```!start_code --port=<port> --password=<password>```
+
+    - For running Jupyter on Remote Machine ( Server or Colab)
+
+      ```!start_jupyter --port=<port>```
   
-- For running VSCode on Remote Machine ( Server or Colab)
-
-  ```!start_code --port=<port> --password=<password>```
-
-- For running Jupyter on Remote Machine ( Server or Colab)
-
-  ```!start_jupyter --port=<port>```
   
+- On Remote Server
+    - It might be beneficial to register ngrok authtoken <token> after installation 
