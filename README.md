@@ -25,7 +25,9 @@
 
     - For running Jupyter on Remote Machine ( Server or Colab)
 
-      ```!start_jupyter --port=<port>```
+      ```!start_jupyter --port=<port>  --ui=<ui>```
+      
+      Default ui options is notebook. To open lab interface pass `--ui lab`
   
   
 - On Remote Server
