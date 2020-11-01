@@ -100,10 +100,11 @@ NOTEBOOK_EXTENSIONS = ["toc2/main", "collapsible_headings/main", "execute_time/E
 # Cell
 class RemoteJupyter:
     """ Install and launch an instance of Remote Jupyter"""
-    def __init__(self, port=9000):
+    def __init__(self, port=9000, ui='notebook'):
         self.port = port
         self._mount = IN_COLAB
         self.url = None
+        self.ui = ui
         if IN_COLAB:
             self._install_extensions()
         self._start_server()
@@ -124,7 +125,9 @@ class RemoteJupyter:
         print(self.url)
 #         if IN_COLAB:
 #             drive.mount("/content/drive")
-        jupyter_cmd = f"jupyter notebook --NotebookApp.allow_remote_access=True  --NotebookApp.disable_check_xsrf=True --ip=0.0.0.0 --port={self.port}"
+        jupyter_cmd = f"jupyter {self.ui} --NotebookApp.allow_remote_access=True  --NotebookApp.disable_check_xsrf=True --ip=0.0.0.0 --port={self.port}"
+        if self.ui == 'lab':
+            jupyter_cmd = f"jupyter {self.ui} --ip=0.0.0.0 --port={self.port} --no-browser"
         execute_cmd(jupyter_cmd)
 
     def __str__(self):

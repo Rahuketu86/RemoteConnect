@@ -17,7 +17,7 @@ def start_code(port:Param("Port to Start Code", type=int)=10000,
 
 # Cell
 @call_parse
-def start_jupyter(port:Param("Port to Start Code", type=int)=9000):
+def start_jupyter(port:Param("Port to Start Code", type=int)=9000, ui:Param("Interface to start", type=str)='notebook'):
     "Starts Jupyter"
     if IN_COLAB: mount_drive()
-    RemoteJupyter(port=port)
+    RemoteJupyter(port=port, ui=ui)
