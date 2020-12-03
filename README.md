@@ -28,7 +28,10 @@
       ```!start_jupyter --port=<port>  --ui=<ui>```
       
       Default ui options is notebook. To open lab interface pass `--ui lab`
-  
+
+    - For running Pluto.jl reactive notebook(Only Server)
+
+      ```!start_pluto --port=<port>```
   
 - On Remote Server
     - It might be beneficial to register ngrok authtoken <token> after installation 
