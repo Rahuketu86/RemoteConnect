@@ -4,7 +4,7 @@ __all__ = ['start_code', 'start_jupyter', 'start_pluto']
 
 # Cell
 from fastscript import call_parse, Param, bool_arg
-from .core import RemoteCode, RemoteJupyter, IN_COLAB, mount_drive
+from .core import RemoteCode, RemoteJupyter, RemotePluto, IN_COLAB, mount_drive
 
 # Cell
 @call_parse
