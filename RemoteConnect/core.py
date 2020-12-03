@@ -139,8 +139,6 @@ class RemotePluto:
     def __init__(self, port=9000):
         self.port = port
         self._mount = IN_COLAB
-        self.url = None
-        self.ui = ui
 #         if IN_COLAB:
 #             self._install_extensions()
         self._start_server()
