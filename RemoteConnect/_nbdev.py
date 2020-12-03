@@ -11,8 +11,10 @@ index = {"IN_COLAB": "00_core.ipynb",
          "RemoteCode": "00_core.ipynb",
          "NOTEBOOK_EXTENSIONS": "00_core.ipynb",
          "RemoteJupyter": "00_core.ipynb",
+         "RemotePluto": "00_core.ipynb",
          "start_code": "01_cli.ipynb",
-         "start_jupyter": "01_cli.ipynb"}
+         "start_jupyter": "01_cli.ipynb",
+         "start_pluto": "01_cli.ipynb"}
 
 modules = ["core.py",
            "cli.py"]
