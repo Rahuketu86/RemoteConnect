@@ -2,6 +2,7 @@
   "RemoteConnect": {
     "Overview": "/",
     "core": "core.html",
-    "cli": "cli.html"
+    "cli": "cli.html",
+    "proxyservers": "proxyservers.html"
   }
 }

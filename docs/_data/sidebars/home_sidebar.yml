@@ -15,6 +15,9 @@ entries:
     - output: web,pdf
       title: cli
       url: cli.html
+    - output: web,pdf
+      title: proxyservers
+      url: proxyservers.html
     output: web
     title: RemoteConnect
   output: web
