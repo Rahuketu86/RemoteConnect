@@ -159,7 +159,7 @@ class RemotePluto:
         print(self.url)
 #         if IN_COLAB:
 #             drive.mount("/content/drive")
-        pluto_cmd = f'julia -e "using Pluto;Pluto.run(port={self.port})"'
+        pluto_cmd = f'julia -e "using Pluto;Pluto.run(port={self.port}, launch_browser=false, require_secret_for_open_links=false, require_secret_for_access=false)"'
 #         if self.ui == 'lab':
 #             jupyter_cmd = f"jupyter {self.ui} --ip=0.0.0.0 --port={self.port} --no-browser"
         execute_cmd(pluto_cmd)
