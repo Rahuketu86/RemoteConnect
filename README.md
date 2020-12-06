@@ -35,3 +35,9 @@
   
 - On Remote Server
     - It might be beneficial to register ngrok authtoken <token> after installation 
+
+## 1.3 ProxyServers
+
+- Added Code and Pluto as jupyter server proxy
+    - Accessible at `Pluto.jl` in notebook or `/pluto` on url
+    - Accessible at `Vscodium` in notebook or `/codium` on url
