@@ -34,7 +34,7 @@ def connect_to_ngrok(port):
         public_url = tunnel.public_url
         print(f"Disconnecting {public_url}")
         ngrok.disconnect(public_url)
-    url = ngrok.connect(port=port, options={"bind_tls":True})
+    url = ngrok.connect(addr=port, options={"bind_tls":True})
     print(f"Remote server can be assesed on : {url}")
     return url
 
