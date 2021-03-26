@@ -67,10 +67,16 @@ def setup_vscode():
 
 # Cell
 def setup_julia():
-    subprocess.run(
-            ["wget", "https://gist.githubusercontent.com/Rahuketu86/3543336b8fe4ea2c1cc7b6edcc96f975/raw/db6c562201ecf655b0bb82d7fcd2a16128bb0148/install_julia.sh"], stdout=subprocess.PIPE
-        )
-    execute_cmd("bash install_julia.sh")
+    if IN_COLAB:
+        subprocess.run(
+                ["wget", "https://gist.githubusercontent.com/Rahuketu86/765ee2ecd59aa40c493fe6a10db606a4/raw/a3498236fb96109e0f6ed2ea8325cf8acafe75d0/install_julia_colab.sh"], stdout=subprocess.PIPE
+            )
+        execute_cmd("bash install_julia_colab.sh")
+    else:
+        subprocess.run(
+                ["wget", "https://gist.githubusercontent.com/Rahuketu86/3543336b8fe4ea2c1cc7b6edcc96f975/raw/db6c562201ecf655b0bb82d7fcd2a16128bb0148/install_julia.sh"], stdout=subprocess.PIPE
+            )
+        execute_cmd("bash install_julia.sh")
 
 # Cell
 class RemoteCode:
