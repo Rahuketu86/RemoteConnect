@@ -134,6 +134,8 @@ class RemoteJupyter:
         self.ui = ui
         if IN_COLAB:
             self._install_extensions()
+            setup_vscode()
+            setup_julia()
         self._start_server()
         self._run_jupyter()
 
@@ -182,11 +184,7 @@ class RemotePluto:
     def _run_pluto(self):
         os.system(f"fuser -n tcp -k {self.port}")
         print(self.url)
-#         if IN_COLAB:
-#             drive.mount("/content/drive")
         pluto_cmd = f'julia -e "using Pluto;Pluto.run(port={self.port}, launch_browser=false, require_secret_for_open_links=false, require_secret_for_access=false)"'
-#         if self.ui == 'lab':
-#             jupyter_cmd = f"jupyter {self.ui} --ip=0.0.0.0 --port={self.port} --no-browser"
         execute_cmd(pluto_cmd)
 
     def __str__(self):
