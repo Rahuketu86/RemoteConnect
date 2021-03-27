@@ -2,4 +2,12 @@ include settings.ini
 include LICENSE
 include CONTRIBUTING.md
 include README.md
+include RemoteConnect/icons/book.ico
+include RemoteConnect/icons/documentation.ico
+include RemoteConnect/icons/vscode.ico
+include RemoteConnect/icons/pluto.ico
+include RemoteConnect/icons/book.svg
+include RemoteConnect/icons/documentation.svg
+include RemoteConnect/icons/vscode.svg
+include RemoteConnect/icons/pluto.svg
 recursive-exclude * __pycache__
