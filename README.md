@@ -41,3 +41,4 @@
 - Added Code and Pluto as jupyter server proxy
     - Accessible at `Pluto.jl` in notebook or `/pluto` on url
     - Accessible at `Vscodium` in notebook or `/codium` on url
+- Added docserver and bookserver for nbdev and jupyterbook
