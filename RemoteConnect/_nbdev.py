@@ -23,7 +23,8 @@ index = {"IN_COLAB": "00_core.ipynb",
          "fix_cmd": "02_proxyservers.ipynb",
          "plutoserver": "02_proxyservers.ipynb",
          "codeserver": "02_proxyservers.ipynb",
-         "docserver": "02_proxyservers.ipynb"}
+         "docserver": "02_proxyservers.ipynb",
+         "bookserver": "02_proxyservers.ipynb"}
 
 modules = ["core.py",
            "cli.py",
