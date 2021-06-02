@@ -32,7 +32,7 @@ modules = ["core.py",
            "cli.py",
            "proxyservers.py"]
 
-doc_url = "https://remoteconnect.netlify.app"
+doc_url = "https://remoteconnect.netlify.app/"
 
 git_url = "https://github.com/rahuketu86/RemoteConnect/tree/master/"
 
