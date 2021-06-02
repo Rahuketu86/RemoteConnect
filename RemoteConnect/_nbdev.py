@@ -5,6 +5,7 @@ __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 index = {"IN_COLAB": "00_core.ipynb",
          "EXTENSIONS": "00_core.ipynb",
          "say_hello": "00_core.ipynb",
+         "connect_to_telebit": "00_core.ipynb",
          "connect_to_ngrok": "00_core.ipynb",
          "execute_cmd": "00_core.ipynb",
          "mount_drive": "00_core.ipynb",

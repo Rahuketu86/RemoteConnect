@@ -9,22 +9,26 @@ from .core import RemoteCode, RemoteJupyter, RemotePluto, IN_COLAB, mount_drive
 # Cell
 @call_parse
 def start_code(port:Param("Port to Start Code", type=int)=10000,
-               password:Param("Password to Start Code", type=str)=None):
+               password:Param("Password to Start Code", type=str)=None,
+               tunnel:Param("Tunel Type", type=str)='ngrok'):
     "Starts Code Server"
     if IN_COLAB: mount_drive()
-    print(RemoteCode(password=password, port=port))
+    RemoteCode(password=password, port=port, tunnel=tunnel)
 
 
 # Cell
 @call_parse
-def start_jupyter(port:Param("Port to Start Jupyter", type=int)=9000, ui:Param("Interface to start", type=str)='notebook'):
+def start_jupyter(port:Param("Port to Start Jupyter", type=int)=9000,
+                  ui:Param("Interface to start", type=str)='notebook',
+                  tunnel:Param("Tunel Type", type=str)='ngrok'):
     "Starts Jupyter"
     if IN_COLAB: mount_drive()
-    RemoteJupyter(port=port, ui=ui)
+    RemoteJupyter(port=port, ui=ui, tunnel=tunnel)
 
 # Cell
 @call_parse
-def start_pluto(port:Param("Port to Start Jupyter", type=int)=9000):
+def start_pluto(port:Param("Port to Start Jupyter", type=int)=9000,
+                tunnel:Param("Tunel Type", type=str)='ngrok'):
     "Starts Pluto.jl reactive notebook"
     if IN_COLAB: mount_drive()
-    RemotePluto(port=port)
+    RemotePluto(port=port, tunnel=tunnel)
