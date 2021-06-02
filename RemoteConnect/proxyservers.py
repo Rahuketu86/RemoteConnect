@@ -33,9 +33,6 @@ def switch_path(curdir, doc_cmd=False):
 # old_path = os.".."
 # old_path.split(os.sep)[-1]
 
-# os.getcwd()
-switch_path(".", doc_cmd=True)
-
 # Cell
 def fix_cmd(cmdlist, doc_cmd=False):
     new_path = switch_path(".", doc_cmd)
