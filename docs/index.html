@@ -64,14 +64,14 @@ nb_path: "nbs/index.ipynb"
 <p><code>!pip install -U git+https://github.com/Rahuketu86/RemoteConnect.git</code></p>
 </li>
 <li><p>For running VSCode on Remote Machine ( Server or Colab)</p>
-<p><code>!start_code --port=&lt;port&gt; --password=&lt;password&gt;</code></p>
+<p><code>!start_code --port=&lt;port&gt; --password=&lt;password&gt; --tunnel=&lt;str:ngrok|telebit&gt;</code></p>
 </li>
 <li><p>For running Jupyter on Remote Machine ( Server or Colab)</p>
-<p><code>!start_jupyter --port=&lt;port&gt;  --ui=&lt;ui&gt;</code></p>
+<p><code>!start_jupyter --port=&lt;port&gt;  --ui=&lt;str:lab|notebook&gt; --tunnel=&lt;str:ngrok|telebit&gt;</code></p>
 <p>Default ui options is notebook. To open lab interface pass <code>--ui lab</code></p>
 </li>
 <li><p>For running Pluto.jl reactive notebook(Only Server)</p>
-<p><code>!start_pluto --port=&lt;port&gt;</code></p>
+<p><code>!start_pluto --port=&lt;port&gt; --tunnel=&lt;str:ngrok|telebit&gt;</code></p>
 </li>
 </ul>
 </li>
@@ -99,7 +99,11 @@ nb_path: "nbs/index.ipynb"
 <li>Accessible at <code>Vscodium</code> in notebook or <code>/codium</code> on url</li>
 </ul>
 </li>
-<li>Added docserver and bookserver for nbdev and jupyterbook</li>
+<li>Added docserver and bookserver for nbdev and jupyterbook<ul>
+<li>Accessible at <a href="/proxyservers.html#docserver"><code>docserver</code></a> in notebook or <code>/docserver</code> on url</li>
+<li>Accessible at <a href="/proxyservers.html#bookserver"><code>bookserver</code></a> in notebook or <code>/bookserver</code> on url</li>
+</ul>
+</li>
 </ul>
 
 </div>
