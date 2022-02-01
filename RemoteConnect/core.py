@@ -102,11 +102,15 @@ def setup_julia():
 
 # Cell
 class RemoteExecutor(object):
-    def __init__(self, port=9000, tunnel='ngrok', authtoken=None):
+    def __init__(self, port=9000, tunnel='ngrok', authtoken=None, password=None, ui='notebook'):
         self.port = port
         self.tunnel = tunnel
         self.authtoken = authtoken
+        self.password = password
+        self.ui = ui
         self.url = None
+
+    def launch(self):
         self.install()
         if IN_COLAB:self.preinstall_colab()
         self.start_server()
@@ -144,8 +148,8 @@ class RemoteCode(RemoteExecutor):
     """ Install and launch an instance of Remote Code"""
 
     def __init__(self, password=None, **kwargs):
+        super(RemoteCode, self).__init__(**kwargs)
         self.password = password
-        super().__init__(**kwargs)
 
     def preinstall_colab(self):
         setup_vscode()
@@ -174,8 +178,8 @@ class RemoteJupyter(RemoteExecutor):
     """ Install and launch an instance of Remote Jupyter"""
 
     def __init__(self, ui='notebook', **kwargs):
+        super(RemoteJupyter, self).__init__(**kwargs)
         self.ui = ui
-        super().__init__(**kwargs)
 
     def install_extension(self):
         subprocess.run(["jupyter", "contrib", "nbextension","install",  "--system"], stdout=subprocess.PIPE)
@@ -203,7 +207,7 @@ class RemotePluto(RemoteExecutor):
     """ Install and launch an instance of Remote Pluto.jl for Julia"""
 
     def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+        super(RemotePluto, self).__init__(**kwargs)
 
     def preinstall_colab(self):
         setup_julia()
