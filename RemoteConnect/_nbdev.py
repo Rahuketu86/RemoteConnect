@@ -3,7 +3,6 @@
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
 index = {"IN_COLAB": "00_core.ipynb",
-         "EXTENSIONS": "00_core.ipynb",
          "say_hello": "00_core.ipynb",
          "connect_to_telebit": "00_core.ipynb",
          "connect_to_ngrok": "00_core.ipynb",
@@ -12,6 +11,7 @@ index = {"IN_COLAB": "00_core.ipynb",
          "setup_vscode": "00_core.ipynb",
          "setup_julia": "00_core.ipynb",
          "RemoteExecutor": "00_core.ipynb",
+         "EXTENSIONS": "00_core.ipynb",
          "RemoteCode": "00_core.ipynb",
          "NOTEBOOK_EXTENSIONS": "00_core.ipynb",
          "SERVER_EXTENSIONS": "00_core.ipynb",
