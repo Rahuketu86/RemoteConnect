@@ -93,13 +93,16 @@ def setup_julia():
 
 # Cell
 class RemoteExecutor(object):
-    def __init__(self, port=9000, tunnel='ngrok', authtoken=None, password=None, ui='notebook'):
+    def __init__(self, port=9000, tunnel='ngrok', authtoken=None, password=None, ui='notebook',
+                 install_code=False, install_julia=False):
         self.port = port
         self.tunnel = tunnel
         self.authtoken = authtoken
         self.password = password
         self.ui = ui
         self.url = None
+        self.install_code = install_code
+        self.install_julia = install_julia
 
     def launch(self):
         self.install()
@@ -108,8 +111,8 @@ class RemoteExecutor(object):
         self.run()
 
     def preinstall_colab(self):
-        setup_vscode()
-        setup_julia()
+        if self.install_code : setup_vscode()
+        if self.install_julia : setup_julia()
         self.install_extensions()
 
     def install(self):

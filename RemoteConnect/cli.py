@@ -4,7 +4,7 @@ __all__ = ['start_code', 'start_jupyter', 'start_pluto']
 
 # Cell
 from fastcore.script import call_parse, Param, bool_arg
-from .core import RemoteCode, RemoteJupyter, RemotePluto, IN_COLAB, mount_drive
+from .core import RemoteCode, RemoteJupyter, RemotePluto, IN_COLAB, mount_drive, connect_to_ngrok
 
 # Cell
 @call_parse
@@ -17,16 +17,24 @@ def start_code(port:Param("Port to Start Code", type=int)=10000,
     remote = RemoteCode(password=password, port=port, tunnel=tunnel, authtoken=authtoken)
     remote.launch()
 
-
 # Cell
 @call_parse
 def start_jupyter(port:Param("Port to Start Jupyter", type=int)=9000,
                   ui:Param("Interface to start", type=str)='notebook',
                   tunnel:Param("Tunel Type", type=str)='ngrok',
-                  authtoken:Param("Tunnel Authtoken for ngrok", type=str)=None):
+                  authtoken:Param("Tunnel Authtoken for ngrok", type=str)=None,
+                  install_code:Param("Flag to install code", type=bool)=False,
+                  install_julia:Param("Flag to install code", type=bool)=False,
+                  ):
     "Starts Jupyter"
     if IN_COLAB: mount_drive()
-    remote = RemoteJupyter(port=port, ui=ui, tunnel=tunnel, authtoken=authtoken)
+    remote = RemoteJupyter(port=port,
+                           ui=ui,
+                           tunnel=tunnel,
+                           authtoken=authtoken,
+                           install_code=install_code,
+                           install_julia=install_julia
+                          )
     remote.launch()
 
 # Cell
