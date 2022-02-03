@@ -143,11 +143,14 @@ class RemoteExecutor(object):
 
     def launch(self):
         self.install()
-        if in_colab():self.preinstall_colab()
+        print(f"Inside lauch in_colab:{in_colab()}")
+        if in_colab():
+            self.preinstall_colab()
         self.start_server()
         self.run()
 
     def preinstall_colab(self):
+        print("RemoteExecutor preinstall colab")
         if self.install_code : setup_vscode()
         if self.install_julia : setup_julia()
         self.install_extensions()
