@@ -46,10 +46,9 @@ def connect_to_localtunel(port):
             url_folder = pathlib.Path.cwd()
             print("Installing localtunnel on colab")
             execute_cmd("npm install -g localtunnel")
-#             subprocess.run("npm install -g localtunnel")
             time.sleep(1)
-            print("Finished Installation")
-            execute_cmd(f"lt --port {port} --subdomain nbrahuketu>> {url_folder}/url.txt 2>&1 &")
+            print("Finished localtunnel Installation")
+            execute_cmd(f"nohup lt --port {port} --subdomain nbrahuketu>> {url_folder}/url.txt 2>&1 &")
             time.sleep(1)
             print("Finished IN_COLAB")
         else:
@@ -58,9 +57,9 @@ def connect_to_localtunel(port):
             time.sleep(1)
         print("Reading Generated url file")
         s = pathlib.Path(f"{url_folder}/url.txt").open().read()
-        print(s)
+#         print(s)
         url = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', str(s))
-        print(url)
+#         print(url)
         if isinstance(url, list): url = url[-1]
         print(f"Remote server can be assesed on : {url}")
         return url
