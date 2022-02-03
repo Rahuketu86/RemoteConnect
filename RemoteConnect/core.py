@@ -36,16 +36,19 @@ def connect_to_localtunel(port):
     try:
         url_folder = pathlib.Path.home()
         print("Inside localtunnel")
+        print("IN_COLAB:", IN_COLAB)
         if IN_COLAB:
             url_folder = pathlib.Path.cwd()
             print("Installing localtunnel on colab")
             subprocess.run("npm install -g localtunnel")
             time.sleep(1)
             print("Finished Installation")
+        print("Skipped or Finished IN_COLAB")
         subprocess.run(f"lt --port {port} --subdomain nbrahuketu>> {url_folder}/url.txt 2>&1 &", stderr=subprocess.STDOUT, shell=True)
         time.sleep(1)
         s = pathlib.Path(f"{url_folder}/url.txt").open().read()
-        url = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', str(s))[-1]
+        url = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', str(s))
+        if isinstance(url, list): url = url[-1]
         print(f"Remote server can be assesed on : {url}")
         return url
     except subprocess.CalledProcessError:
