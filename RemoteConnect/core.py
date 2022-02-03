@@ -221,8 +221,10 @@ class RemoteJupyter(RemoteExecutor):
         self.ui = ui
 
     def preinstall_colab(self):
-        print("Installing utilities for colab")
-        super().preinstall_colab()
+        print("Installing utilities for jupyter in colab")
+        if self.install_code : setup_vscode()
+        if self.install_julia : setup_julia()
+        self.install_extensions()
 
     def install_extension(self):
         subprocess.run(["jupyter", "contrib", "nbextension","install",  "--system"], stdout=subprocess.PIPE)
