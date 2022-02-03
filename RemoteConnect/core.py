@@ -35,6 +35,7 @@ def connect_to_telebit(port):
 def connect_to_localtunel(port):
     try:
         url_folder = pathlib.Path.home()
+        print("Inside localtunnel")
         if IN_COLAB:
             url_folder = pathlib.Path.cwd()
             print("Installing localtunnel on colab")
