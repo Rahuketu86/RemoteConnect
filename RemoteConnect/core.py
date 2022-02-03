@@ -28,7 +28,7 @@ def connect_to_telebit(port):
         url = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', str(s))[0]
         print(f"Remote server can be assesed on : {url}")
         return url
-    except CalledProcessError:
+    except subprocess.CalledProcessError:
         print("Need to install and register device with telebit first")
 
 # Cell
@@ -42,13 +42,13 @@ def connect_to_localtunel(port):
             subprocess.run("npm install -g localtunnel")
             time.sleep(1)
             print("Finished Installation")
-        subprocess.run(f"lt --port {port} --subdomain nbrahuketu>> ~/url.txt 2>&1 &", stderr=subprocess.STDOUT, shell=True)
+        subprocess.run(f"lt --port {port} --subdomain nbrahuketu>> {url_folder}/url.txt 2>&1 &", stderr=subprocess.STDOUT, shell=True)
         time.sleep(1)
         s = pathlib.Path(f"{url_folder}/url.txt").open().read()
         url = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', str(s))[-1]
         print(f"Remote server can be assesed on : {url}")
         return url
-    except CalledProcessError:
+    except subprocess.CalledProcessError:
         print("Need to install localtunnel first")
 
 # Cell
