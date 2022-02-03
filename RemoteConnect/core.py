@@ -34,7 +34,11 @@ def connect_to_telebit(port):
 # Cell
 def connect_to_localtunel(port):
     try:
-        if IN_COLAB: subprocess.run("!npm install -g localtunnel"); time.sleep(1)
+        if IN_COLAB:
+            print("Installing localtunnel on colab")
+            subprocess.run("npm install -g localtunnel")
+            time.sleep(1)
+            print("Finished Installation")
         subprocess.run(f"lt --port {port} --subdomain nbrahuketu>> ~/url.txt 2>&1 &", stderr=subprocess.STDOUT, shell=True)
         time.sleep(1)
         s = pathlib.Path(f"{pathlib.Path.home()}/url.txt").open().read()
