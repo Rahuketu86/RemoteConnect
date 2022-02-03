@@ -54,6 +54,7 @@ def connect_to_localtunel(port):
         subprocess.run(f"lt --port {port} --subdomain nbrahuketu>> {url_folder}/url.txt 2>&1 &", stderr=subprocess.STDOUT, shell=True)
         time.sleep(1)
         s = pathlib.Path(f"{url_folder}/url.txt").open().read()
+        print(s)
         url = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', str(s))
         if isinstance(url, list): url = url[-1]
         print(f"Remote server can be assesed on : {url}")
