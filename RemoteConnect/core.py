@@ -20,6 +20,11 @@ def say_hello(to):
 
 # Cell
 IN_COLAB = 'google.colab' in str(get_ipython())
+try:
+    from google.colab import drive
+    IN_COLAB = True
+except ImportError:
+    IN_COLAB = False
 
 # Cell
 def connect_to_telebit(port):
