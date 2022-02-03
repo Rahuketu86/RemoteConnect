@@ -217,6 +217,10 @@ class RemoteJupyter(RemoteExecutor):
         super(RemoteJupyter, self).__init__(**kwargs)
         self.ui = ui
 
+    def preinstall_colab(self):
+        print("Installing utilities for colab")
+        super().preinstall_colab()
+
     def install_extension(self):
         subprocess.run(["jupyter", "contrib", "nbextension","install",  "--system"], stdout=subprocess.PIPE)
         #nbextensions_configurator enable --user
