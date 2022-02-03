@@ -49,7 +49,7 @@ def connect_to_localtunel(port):
 #             subprocess.run("npm install -g localtunnel")
             time.sleep(1)
             print("Finished Installation")
-            get_ipython().system_raw(f"lt --port {port} --subdomain nbrahuketu>> {url_folder}/url.txt 2>&1 &")
+            execute_cmd(f"lt --port {port} --subdomain nbrahuketu>> {url_folder}/url.txt 2>&1 &")
             time.sleep(1)
             print("Finished IN_COLAB")
         else:
