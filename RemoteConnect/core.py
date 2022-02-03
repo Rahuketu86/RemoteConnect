@@ -97,6 +97,7 @@ def execute_cmd(cmd):
 def mount_drive():
     from google.colab import drive
     drive.mount("/content/drive")
+    print("Finished Mounting Drive")
 
 # Cell
 def setup_vscode():

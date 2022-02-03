@@ -28,7 +28,9 @@ def start_jupyter(port:Param("Port to Start Jupyter", type=int)=9000,
                   install_julia:Param("Flag to install code", type=bool)=False,
                   ):
     "Starts Jupyter"
-    if in_colab(): mount_drive()
+    if in_colab():
+        print("Mounting Drive")
+        mount_drive()
     remote = RemoteJupyter(port=port,
                            ui=ui,
                            tunnel=tunnel,
