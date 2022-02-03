@@ -46,7 +46,8 @@ def connect_to_localtunel(port):
         if in_colab():
             url_folder = pathlib.Path.cwd()
             print("Installing localtunnel on colab")
-            subprocess.run("npm install -g localtunnel")
+            execute_cmd("npm install -g localtunnel")
+#             subprocess.run("npm install -g localtunnel")
             time.sleep(1)
             print("Finished Installation")
         print("Skipped or Finished IN_COLAB")
