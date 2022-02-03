@@ -59,6 +59,7 @@ def connect_to_localtunel(port):
         s = pathlib.Path(f"{url_folder}/url.txt").open().read()
         print(s)
         url = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', str(s))
+        print(url)
         if isinstance(url, list): url = url[-1]
         print(f"Remote server can be assesed on : {url}")
         return url
