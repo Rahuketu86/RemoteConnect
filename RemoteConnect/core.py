@@ -50,6 +50,7 @@ def connect_to_localtunel(port):
             time.sleep(1)
             print("Finished Installation")
             get_ipython().system_raw(f"lt --port {port} --subdomain nbrahuketu>> {url_folder}/url.txt 2>&1 &")
+            time.sleep(1)
             print("Finished IN_COLAB")
         else:
             url_folder = pathlib.Path.home()
