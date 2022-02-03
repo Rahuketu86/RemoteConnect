@@ -40,7 +40,6 @@ def connect_to_telebit(port):
 # Cell
 def connect_to_localtunel(port):
     try:
-        url_folder = pathlib.Path.home()
         print("Inside localtunnel")
         print("IN_COLAB:", in_colab())
         if in_colab():
@@ -50,10 +49,12 @@ def connect_to_localtunel(port):
 #             subprocess.run("npm install -g localtunnel")
             time.sleep(1)
             print("Finished Installation")
-        print("Skipped or Finished IN_COLAB")
-        #subprocess.run(f"lt --port {port} --subdomain nbrahuketu>> {url_folder}/url.txt 2>&1 &", stderr=subprocess.STDOUT, shell=True)
-        execute_cmd(f"lt --port {port} --subdomain nbrahuketu>> {url_folder}/url.txt 2>&1 &")
-        time.sleep(1)
+            get_ipython().system_raw(f"lt --port {port} --subdomain nbrahuketu>> {url_folder}/url.txt 2>&1 &")
+            print("Finished IN_COLAB")
+        else:
+            url_folder = pathlib.Path.home()
+            execute_cmd(f"lt --port {port} --subdomain nbrahuketu>> {url_folder}/url.txt 2>&1 &")
+            time.sleep(1)
         print("Reading Generated url file")
         s = pathlib.Path(f"{url_folder}/url.txt").open().read()
         print(s)
