@@ -21,17 +21,17 @@
 
     - For running VSCode on Remote Machine ( Server or Colab)
 
-      ```!start_code --port=<port> --password=<password> --tunnel=<str:ngrok|telebit>```
+      ```!start_code --port=<port> --password=<password> --tunnel=<str:ngrok|telebit|localtunnel>```
 
     - For running Jupyter on Remote Machine ( Server or Colab)
 
-      ```!start_jupyter --port=<port>  --ui=<str:lab|notebook> --tunnel=<str:ngrok|telebit>```
+      ```!start_jupyter --port=<port>  --ui=<str:lab|notebook> --tunnel=<str:ngrok|telebit|localtunnel>```
       
       Default ui options is notebook. To open lab interface pass `--ui lab`
 
     - For running Pluto.jl reactive notebook(Only Server)
 
-      ```!start_pluto --port=<port> --tunnel=<str:ngrok|telebit>```
+      ```!start_pluto --port=<port> --tunnel=<str:ngrok|telebit|localtunnel>```
   
 - On Remote Server
     - It might be beneficial to register ngrok authtoken <token> after installation 
