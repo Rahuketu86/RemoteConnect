@@ -225,19 +225,26 @@ class RemoteJupyter(RemoteExecutor):
         if self.install_code : setup_vscode()
         if self.install_julia : setup_julia()
         self.install_extensions()
+        print("Finished preinstall colab in jupyter")
 
     def install_extension(self):
-        subprocess.run(["jupyter", "contrib", "nbextension","install",  "--system"], stdout=subprocess.PIPE)
-        #nbextensions_configurator enable --user
-        subprocess.run(["jupyter", "nbextensions_configurator","enable",  "--system"], stdout=subprocess.PIPE)
+        print("Installing Jupyter extensions")
+        execute_cmd("jupyter contrib nbextension install --system")
+        execute_cmd("jupyter nbextensions_configurator enable --system")
+#         subprocess.run(["jupyter", "contrib", "nbextension","install",  "--system"], stdout=subprocess.PIPE)
+#         #nbextensions_configurator enable --user
+#         subprocess.run(["jupyter", "nbextensions_configurator","enable",  "--system"], stdout=subprocess.PIPE)
         for ext in NOTEBOOK_EXTENSIONS:
-            subprocess.run(["jupyter", "nbextension", "enable", ext], stdout=subprocess.PIPE)
+            execute_cmd(f"jupyter nbextension enable {ext}")
+#             subprocess.run(["jupyter", "nbextension", "enable", ext], stdout=subprocess.PIPE)
 
         for ext in SERVER_EXTENSIONS:
-            subprocess.run(["jupyter", "serverextension", "enable", ext], stdout=subprocess.PIPE)
+            execute_cmd(f"jupyter serverextension enable {ext}")
+#             subprocess.run(["jupyter", "serverextension", "enable", ext], stdout=subprocess.PIPE)
 
         for ext in LAB_EXTENSIONS:
-            subprocess.run(["jupyter", "labextension", "enable", ext], stdout=subprocess.PIPE)
+            execute_cmd(f"jupyter labextension enable {ext}")
+#             subprocess.run(["jupyter", "labextension", "enable", ext], stdout=subprocess.PIPE)
 
     def run(self):
         os.system(f"fuser -n tcp -k {self.port}")
