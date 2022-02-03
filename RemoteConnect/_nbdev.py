@@ -3,7 +3,6 @@
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
 index = {"say_hello": "00_core.ipynb",
-         "IN_COLAB": "00_core.ipynb",
          "connect_to_telebit": "00_core.ipynb",
          "connect_to_localtunel": "00_core.ipynb",
          "connect_to_ngrok": "00_core.ipynb",
