@@ -87,8 +87,9 @@ def connect_to_ngrok(port, authtoken=None):
     return url
 
 # Cell
-def execute_cmd(cmd):
-    print(f"Executing >>> {cmd}")
+def execute_cmd(cmd, show_cmd=None, verbose=True):
+    if not show_cmd:print(f"Executing >>> {cmd}")
+    else: print(show_cmd)
     with subprocess.Popen(
         [cmd],
         shell=True,
@@ -97,7 +98,7 @@ def execute_cmd(cmd):
         universal_newlines=True,
     ) as proc:
         for line in proc.stdout:
-            print(line, end="")
+            if verbose:print(line, end="")
 
 # Cell
 def mount_drive():

@@ -28,11 +28,14 @@ index = {"say_hello": "00_core.ipynb",
          "plutoserver": "02_proxyservers.ipynb",
          "codeserver": "02_proxyservers.ipynb",
          "docserver": "02_proxyservers.ipynb",
-         "bookserver": "02_proxyservers.ipynb"}
+         "bookserver": "02_proxyservers.ipynb",
+         "setup_gh": "04_colab.ipynb",
+         "RemoteProject": "04_colab.ipynb"}
 
 modules = ["core.py",
            "cli.py",
-           "proxyservers.py"]
+           "proxyservers.py",
+           "colab.py"]
 
 doc_url = "https://remoteconnect.netlify.app/"
 

@@ -3,6 +3,7 @@
     "Overview": "/",
     "core": "core.html",
     "cli": "cli.html",
-    "proxyservers": "proxyservers.html"
+    "proxyservers": "proxyservers.html",
+    "colab": "colab.html"
   }
 }
