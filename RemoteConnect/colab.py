@@ -5,6 +5,10 @@ __all__ = ['setup_gh', 'RemoteProject']
 # Cell
 from fastcore.basics import in_colab, in_jupyter
 from .core import  mount_drive, execute_cmd
+import configparser
+import os
+import pathlib
+import subprocess
 
 # Cell
 def setup_gh():
