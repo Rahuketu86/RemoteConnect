@@ -69,7 +69,10 @@ class RemoteProject(object):
         project_loc = root/proj_name
         execute_cmd(cmd = f"git clone {self.git_auth_url(proj_name)}", show_cmd="Cloning Repo")
         get_ipython().magic(f"cd {project_loc}")
-        if self.is_nbdev:execute_cmd(f"nbdev_install_git_hooks")
+        if self.is_nbdev:
+            execute_cmd(f"nbdev_install_git_hooks")
+            print("Installing local package")
+            execute_cmd(f"pip3 install -e .[dev]")
 
     def save(self):
         return self.cfg.write((pathlib.Path(self.cfg_path)/self.cfg_name).open('w'))
