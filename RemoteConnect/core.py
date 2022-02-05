@@ -14,6 +14,7 @@ from fastcore.meta import delegates
 from fastcore.basics import in_colab
 from IPython import get_ipython
 import pathlib
+import uuid
 
 # Cell
 def say_hello(to):
