@@ -14,6 +14,7 @@ from fastcore.meta import delegates
 from fastcore.basics import in_colab
 from IPython import get_ipython
 from IPython.display import display
+from notebook.auth import passwd
 import pathlib
 import uuid
 import logging
@@ -295,6 +296,7 @@ class RemoteJupyter(RemoteExecutor):
             execute_cmd(f"export JUPYTER_TOKEN={token}")
             add_cmd = f" --allow-root"
             jupyter_cmd = jupyter_cmd + add_cmd
+            passwd()
         execute_cmd(jupyter_cmd)
 
 # Cell
