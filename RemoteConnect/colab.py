@@ -45,9 +45,11 @@ class RemoteProject(object):
         root = pathlib.Path(self.cfg['DEFAULT']['project_path'])
         project_loc = root/proj_name
         if project_loc.exists():
-            if in_colab() or in_jupyter():get_ipython().magic(f"cd {project_loc}")
+            if in_colab() or in_jupyter():self.setup_project_env(project_loc)
         else:
-            if in_colab() or in_jupyter():self.clone_setup_repo(proj_name)
+            if in_colab() or in_jupyter():
+                self.clone_setup_repo(proj_name)
+                self.setup_project_env(project_loc)
         return project_loc
 
     def setup_git_global(self):
@@ -62,17 +64,20 @@ class RemoteProject(object):
         execute_cmd(f'gh auth status')
         # execute_cmd()
 
+
+    def setup_project_env(self, project_loc):
+        get_ipython().magic(f"cd {project_loc}")
+        if self.is_nbdev:
+            execute_cmd(f"nbdev_install_git_hooks")
+            print("Installing local package")
+            execute_cmd(f"pip3 install -e .[dev]")
+
     def clone_setup_repo(self, proj_name):
         execute_cmd(f"gh auth login --with-token {self.cfg['DEFAULT']['git_user_pat']}")
         root = pathlib.Path(self.cfg['DEFAULT']['project_path'])
         get_ipython().magic(f"cd {root}")
         project_loc = root/proj_name
         execute_cmd(cmd = f"git clone {self.git_auth_url(proj_name)}", show_cmd="Cloning Repo")
-        get_ipython().magic(f"cd {project_loc}")
-        if self.is_nbdev:
-            execute_cmd(f"nbdev_install_git_hooks")
-            print("Installing local package")
-            execute_cmd(f"pip3 install -e .[dev]")
 
     def save(self):
         return self.cfg.write((pathlib.Path(self.cfg_path)/self.cfg_name).open('w'))

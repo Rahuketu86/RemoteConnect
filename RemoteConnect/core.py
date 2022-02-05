@@ -309,7 +309,7 @@ class RemoteJupyter(RemoteExecutor):
             execute_cmd(f"export JUPYTER_TOKEN={token}")
             add_cmd = f" --allow-root"
             jupyter_cmd = jupyter_cmd + add_cmd
-            passwd()
+            # passwd()
         execute_cmd(jupyter_cmd)
 
 # Cell
