@@ -50,9 +50,12 @@ def connect_to_localtunel(port, subdomain=None):
             execute_cmd("npm install -g localtunnel")
             time.sleep(1)
             print("Finished localtunnel Installation")
-            if subdomain:execute_cmd(f"nohup lt --port {port} --subdomain {subdomain}>> {url_folder}/url.txt 2>&1 &")
-            else:execute_cmd(f"nohup lt --port {port} >> {url_folder}/url.txt 2>&1 &")
-            time.sleep(1)
+            if subdomain:
+                execute_cmd(f"nohup lt --port {port} --subdomain {subdomain}>> {url_folder}/url.txt 2>&1 &")
+                time.sleep(1)
+            else:
+                execute_cmd(f"nohup lt --port {port} >> {url_folder}/url.txt 2>&1 &")
+                time.sleep(1)
             print("Finished IN_COLAB")
         else:
             url_folder = pathlib.Path.home()
@@ -103,6 +106,10 @@ def execute_cmd(cmd, show_cmd=None, verbose=True):
         universal_newlines=True,
     ) as proc:
         for line in proc.stdout:
+            if in_colab():
+                if verbose:display(line)
+            if verbose:print(line, end="")
+        for line in proc.stderr:
             if in_colab():
                 if verbose:display(line)
             if verbose:print(line, end="")
