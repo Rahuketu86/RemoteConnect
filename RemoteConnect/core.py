@@ -185,9 +185,9 @@ class RemoteExecutor(object):
         if self.tunnel == 'ngrok':
             self.url = connect_to_ngrok(self.port, self.authtoken)
         elif self.tunnel == 'telebit':
-            self.url = connect_to_telebit(self.port, self.subdomain)
+            self.url = connect_to_telebit(self.port)
         elif self.tunnel == 'localtunnel':
-            self.url = connect_to_localtunel(self.port)
+            self.url = connect_to_localtunel(self.port, self.subdomain)
         else:
             raise Exception("Tunnel not specified")
 
