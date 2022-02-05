@@ -13,6 +13,7 @@ from pyngrok import ngrok
 from fastcore.meta import delegates
 from fastcore.basics import in_colab
 from IPython import get_ipython
+from IPython.display import display
 import pathlib
 import uuid
 
@@ -102,6 +103,8 @@ def execute_cmd(cmd, show_cmd=None, verbose=True):
         universal_newlines=True,
     ) as proc:
         for line in proc.stdout:
+            if in_colab():
+                if verbose:display(line)
             if verbose:print(line, end="")
 
 # Cell
@@ -274,7 +277,8 @@ class RemoteJupyter(RemoteExecutor):
         if in_colab():
             token = str(uuid.uuid1())
             print(f"Jupyter token for colab: {token}")
-            add_cmd = f" --allow-root --ServerApp.token='{token}'"
+            execute_cmd(f"export JUPYTER_TOKEN={token}")
+            add_cmd = f" --allow-root"
             jupyter_cmd = jupyter_cmd + add_cmd
         execute_cmd(jupyter_cmd)
 
