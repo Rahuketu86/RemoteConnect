@@ -263,11 +263,14 @@ class RemoteJupyter(RemoteExecutor):
 
     def run(self):
         os.system(f"fuser -n tcp -k {self.port}")
-        add_cmd = " --allow-root"
         jupyter_cmd = f"jupyter {self.ui} --NotebookApp.allow_remote_access=True  --NotebookApp.disable_check_xsrf=True --ip=0.0.0.0 --port={self.port}"
         if self.ui == 'lab':
             jupyter_cmd = f"jupyter {self.ui} --ip=0.0.0.0 --port={self.port} --no-browser"
-        if in_colab(): jupyter_cmd = jupyter_cmd + add_cmd
+        if in_colab():
+            token = str(uuid.uuid1())
+            print(f"Jupyter token for colab: {token}")
+            add_cmd = f" --allow-root --ServerApp.token='{token}'"
+            jupyter_cmd = jupyter_cmd + add_cmd
         execute_cmd(jupyter_cmd)
 
 # Cell
