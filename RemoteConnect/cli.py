@@ -24,6 +24,7 @@ def start_jupyter(port:Param("Port to Start Jupyter", type=int)=9000,
                   ui:Param("Interface to start", type=str)='notebook',
                   tunnel:Param("Tunel Type", type=str)='ngrok',
                   authtoken:Param("Tunnel Authtoken for ngrok", type=str)=None,
+                  subdomain:Param("Add a subdomain only for localtunnel", type=str)=None,
                   install_code:Param("Flag to install code", type=bool)=False,
                   install_julia:Param("Flag to install code", type=bool)=False,
                   ):
@@ -35,6 +36,7 @@ def start_jupyter(port:Param("Port to Start Jupyter", type=int)=9000,
                            ui=ui,
                            tunnel=tunnel,
                            authtoken=authtoken,
+                           subdomain=subdomain,
                            install_code=install_code,
                            install_julia=install_julia
                           )

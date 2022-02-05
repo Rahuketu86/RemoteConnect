@@ -39,7 +39,7 @@ def connect_to_telebit(port):
         print("Need to install and register device with telebit first")
 
 # Cell
-def connect_to_localtunel(port):
+def connect_to_localtunel(port, subdomain=None):
     try:
         print("Inside localtunnel")
         print("IN_COLAB:", in_colab())
@@ -49,12 +49,15 @@ def connect_to_localtunel(port):
             execute_cmd("npm install -g localtunnel")
             time.sleep(1)
             print("Finished localtunnel Installation")
-            execute_cmd(f"nohup lt --port {port} --subdomain nbrahuketu>> {url_folder}/url.txt 2>&1 &")
+            if subdomain:execute_cmd(f"nohup lt --port {port} --subdomain {subdomain}>> {url_folder}/url.txt 2>&1 &")
+            else:execute_cmd(f"nohup lt --port {port} >> {url_folder}/url.txt 2>&1 &")
             time.sleep(1)
             print("Finished IN_COLAB")
         else:
             url_folder = pathlib.Path.home()
-            execute_cmd(f"lt --port {port} --subdomain nbrahuketu>> {url_folder}/url.txt 2>&1 &")
+
+            if subdomain:execute_cmd(f"lt --port {port} --subdomain {subdomain}>> {url_folder}/url.txt 2>&1 &")
+            else: execute_cmd(f"lt --port {port}>> {url_folder}/url.txt 2>&1 &")
             time.sleep(1)
         print("Reading Generated url file")
         s = pathlib.Path(f"{url_folder}/url.txt").open().read()
@@ -146,7 +149,7 @@ def install_jupyter_extension(NOTEBOOK_EXTENSIONS, SERVER_EXTENSIONS, LAB_EXTENS
 
 # Cell
 class RemoteExecutor(object):
-    def __init__(self, port=9000, tunnel='ngrok', authtoken=None, password=None, ui='notebook',
+    def __init__(self, port=9000, tunnel='ngrok', authtoken=None, password=None, subdomain=None,ui='notebook',
                  install_code=False, install_julia=False):
         self.port = port
         self.tunnel = tunnel
@@ -154,6 +157,7 @@ class RemoteExecutor(object):
         self.password = password
         self.ui = ui
         self.url = None
+        self.subdomain = subdomain
         self.install_code = install_code
         self.install_julia = install_julia
 
@@ -181,7 +185,7 @@ class RemoteExecutor(object):
         if self.tunnel == 'ngrok':
             self.url = connect_to_ngrok(self.port, self.authtoken)
         elif self.tunnel == 'telebit':
-            self.url = connect_to_telebit(self.port)
+            self.url = connect_to_telebit(self.port, self.subdomain)
         elif self.tunnel == 'localtunnel':
             self.url = connect_to_localtunel(self.port)
         else:
