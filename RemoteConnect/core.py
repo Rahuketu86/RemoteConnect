@@ -16,10 +16,18 @@ from IPython import get_ipython
 from IPython.display import display
 import pathlib
 import uuid
+import logging
 
 # Cell
 def say_hello(to):
     print(f"Say hello to {to}")
+
+# Cell
+logging.basicConfig(
+                            format='%(message)s',
+                            datefmt='%H:%M:%S',
+                            level=logging.DEBUG)
+# logging.debug("Hello")
 
 # Cell
 # IN_COLAB = 'google.colab' in str(get_ipython())
@@ -107,7 +115,7 @@ def execute_cmd(cmd, show_cmd=None, verbose=True):
     ) as proc:
         for line in proc.stdout:
             if in_colab():
-                if verbose:print(line, flush=True)
+                if verbose:logging.debug(line)
             if verbose:print(line, end="")
         # for line in proc.stderr:
         #     if in_colab():
