@@ -107,12 +107,12 @@ def execute_cmd(cmd, show_cmd=None, verbose=True):
     ) as proc:
         for line in proc.stdout:
             if in_colab():
-                if verbose:display(line)
+                if verbose:print(line, flush=True)
             if verbose:print(line, end="")
-        for line in proc.stderr:
-            if in_colab():
-                if verbose:display(line)
-            if verbose:print(line, end="")
+        # for line in proc.stderr:
+        #     if in_colab():
+        #         if verbose:display(line)
+        #     if verbose:print(line, end="")
 
 # Cell
 def mount_drive():
