@@ -121,10 +121,16 @@ def execute_cmd(cmd, show_cmd=None, verbose=True):
         bufsize=1,
         universal_newlines=True,
     ) as proc:
-        for line in proc.stdout:
-            if in_colab():
-                if verbose:logger.debug(line)
-            if verbose:print(line, end="")
+        while True:
+            output = proc.stdout.readline()
+            if output == '' and proc.poll() is not None:
+                break
+            if output:
+                if verbose:print(output, end="")
+        # for line in proc.stdout:
+        #     if in_colab():
+        #         if verbose:logger.debug(line)
+        #     if verbose:print(line, end="")
         # for line in proc.stderr:
         #     if in_colab():
         #         if verbose:display(line)
