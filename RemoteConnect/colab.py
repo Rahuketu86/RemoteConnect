@@ -71,6 +71,7 @@ class RemoteProject(object):
             execute_cmd(f"nbdev_install_git_hooks")
             print("Installing local package")
             execute_cmd(f"pip3 install -e .[dev]")
+            execute_cmd("bash update_colab.sh")
 
     def clone_setup_repo(self, proj_name):
         execute_cmd(f"gh auth login --with-token {self.cfg['DEFAULT']['git_user_pat']}")
