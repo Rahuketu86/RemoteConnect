@@ -104,7 +104,9 @@ def connect_to_ngrok(port, authtoken=None):
     except:
         print("Some error in ngrok.get_tunnels()")
 #     url = ngrok.connect(addr=port, options={"bind_tls":True})
-    if authtoken:ngrok.set_auth_token(authtoken)
+    if authtoken:
+        ngrok.set_auth_token(authtoken)
+        execute_cmd(f"ngrok config add-authtoken {authtoken})
     url = ngrok.connect(addr=port, bind_tls=True)
     time.sleep(1)
     print(f"Remote server can be assesed on : {url}")
